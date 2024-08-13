@@ -19,7 +19,6 @@ function App() {
   const [defaultLanguage, setDefaultLanguage] = useState("en");
 
   useEffect(() => {
-    // 从存储中加载设置
     chrome.storage.sync.get(["openaiApiKey", "useProxy", "proxyUrl", "defaultLanguage"], (result) => {
       if (result.openaiApiKey) setApiKey(result.openaiApiKey);
       if (result.useProxy !== undefined) setUseProxy(result.useProxy);

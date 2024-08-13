@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     const handleConnect = (port: { onMessage: { addListener: (arg0: (msg: any) => void) => void; }; disconnect: () => void; }) => {
-      console.log("Connected to background script");
+      // console.log("Connected to background script");
       port.onMessage.addListener((msg) => {
         if (msg.type === "chunk") {
           setTranslation((prev) => prev === "Translating..." ? msg.content : prev + msg.content);
@@ -61,13 +61,13 @@ function App() {
   }, []);
 
   const handleButtonClick = async () => {
-    console.log("Button clicked. Selected text:", selectedText);
+    // console.log("Button clicked. Selected text:", selectedText);
     setShowButton(false);
     setShowCard(true);
     setTranslation("Translating...");
 
     try {
-      console.log("Sending message to background script...");
+      // console.log("Sending message to background script...");
       const response = await browser.runtime.sendMessage({
         action: "translateText",
         text: selectedText
